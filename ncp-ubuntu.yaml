@@ -450,12 +450,12 @@ data:
     # support automatically creating the IP blocks. The definition is a comma
     # separated list: CIDR,CIDR,... Mixing different formats (e.g. UUID,CIDR)
     # is not supported.
-    container_ip_blocks = tenant1-container-ip-block
+    container_ip_blocks = K8S-PODS-IP-BLOCK
 
     # Name or UUID of the container ip blocks that will be used for creating
     # subnets for no-SNAT projects. If specified, no-SNAT projects will use
     # these ip blocks ONLY. Otherwise they will use container_ip_blocks
-    no_snat_ip_blocks = tenant1-no-snat-ip-block
+    no_snat_ip_blocks = K8S-NO-SNAT-IP-BLOCK
 
     # Name or UUID of the external ip pools that will be used for allocating IP
     # addresses which will be used for translating container IPs via SNAT
@@ -463,7 +463,7 @@ data:
     # creating the ip pools. The definition is a comma separated list:
     # CIDR,IP_1-IP_2,... Mixing different formats (e.g. UUID, CIDR&IP_Range) is
     # not supported.
-    external_ip_pools = tenant1-container-ext-ip-pool
+    external_ip_pools = K8S-EXT-IP-POOL
 
 
     # Name or UUID of the top-tier router for the container cluster network,
@@ -479,7 +479,7 @@ data:
 
     # Name or UUID of the external ip pools that will be used only for
     # allocating IP addresses for Ingress controller and LB service
-    external_ip_pools_lb = tenant1-container-lb-ip-pool
+    external_ip_pools_lb = K8S-LB-IP-POOL
 
     # Name or UUID of the NSX overlay transport zone that will be used for
     # creating logical switches for container networking. It must refer to an
@@ -508,11 +508,11 @@ data:
 
     # Name or UUID of the firewall section that will be used to create firewall
     # sections below this mark section
-    #top_firewall_section_marker = tenant1-k8s_top_firewall_section
+    #top_firewall_section_marker = <None>
 
     # Name or UUID of the firewall section that will be used to create firewall
     # sections above this mark section
-    #bottom_firewall_section_marker = tenant1-k8s_bottom_firewall_section
+    #bottom_firewall_section_marker = <None>
 
     # Replication mode of container logical switch, set SOURCE for cloud as it
     # only supports head replication mode
@@ -545,7 +545,7 @@ data:
     #snat_secondary_ips = {}
 
     # If this value is not empty, NCP will append it to nameserver list
-    dns_servers = [corp.local]
+    dns_servers = corp.local
 
     # Set this to True to enable NCP to report errors through NSXError CRD.
     #enable_nsx_err_crd = False
@@ -592,7 +592,7 @@ data:
     adaptor = kubernetes
 
     # Specify cluster for adaptor.
-    cluster = tenant1-k8s
+    cluster = k8s-cluster-01
 
     # Log level for NCP operations
     # Choices: NOTSET DEBUG INFO WARNING ERROR CRITICAL
@@ -890,7 +890,7 @@ data:
     adaptor = kubernetes
 
     # Specify cluster for adaptor.
-    cluster = tenant1-k8s
+    cluster = k8s-cluster-01
 
     # Log level for NCP operations
     # Choices: NOTSET DEBUG INFO WARNING ERROR CRITICAL
