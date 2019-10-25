@@ -1,24 +1,21 @@
-apiVersion: extensions/v1beta1
-kind: Deployment
+apiVersion: v1
+kind: ReplicationController
 metadata:
-  name: livefire-demo-dly
+  name: livefire-rc
+  labels:
+    app: livefire-demo
 spec:
   replicas: 3
-  selector:
-    matchLabels:
-      app: livefire-demo
   template:
     metadata:
       labels:
         app: livefire-demo
-        version: v1.0
     spec:
       containers:
       - name: livefire-demo
-        image:  harbor-01a.corp.local/library/livefire-pod:v3
+        image: harbor-01a.corp.local/library/livefire-pod:v3
         ports:
         - containerPort: 80
-        - containerPort: 443
         env:
         - name: POD_NAME
           valueFrom:
@@ -36,4 +33,3 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: spec.nodeName
-

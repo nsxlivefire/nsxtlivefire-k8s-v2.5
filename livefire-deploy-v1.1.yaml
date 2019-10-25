@@ -1,7 +1,7 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: livefire-demo-dly
+  name: livefire-deploy
 spec:
   replicas: 5
   selector:

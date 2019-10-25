@@ -504,7 +504,7 @@ data:
 
     # Name or UUID of the spoof guard switching profile that will be used by
     # NCP for leader election
-    #election_profile = <None>
+    #election_profile = sgp_k8s-cluster-01
 
     # Name or UUID of the firewall section that will be used to create firewall
     # sections below this mark section
@@ -733,16 +733,6 @@ spec:
               valueFrom:
                 fieldRef:
                   fieldPath: metadata.namespace
-          livenessProbe:
-            exec:
-              command:
-                - /bin/sh
-                - -c
-                - timeout 5 check_pod_liveness nsx-ncp
-            initialDelaySeconds: 5
-            timeoutSeconds: 5
-            periodSeconds: 10
-            failureThreshold: 5
           volumeMounts:
           - name: config-volume
             # NCP expects ncp.ini is present in /etc/nsx-ujo

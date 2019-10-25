@@ -8,5 +8,5 @@ spec:
     http:
       paths:
       - backend:
-          serviceName: livefire-demo-rc
+          serviceName: livefire-cip
           servicePort: 80

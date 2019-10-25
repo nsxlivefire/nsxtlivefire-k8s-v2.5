@@ -1,7 +1,7 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: livefire-type-lb
+  name: livefire-deploy
 spec:
   replicas: 4
   selector:
@@ -48,7 +48,6 @@ spec:
   - port: 80
     targetPort: 81
     protocol: TCP
-    name: livefire-lb
   selector:
     tier: web-tier
   type: LoadBalancer
