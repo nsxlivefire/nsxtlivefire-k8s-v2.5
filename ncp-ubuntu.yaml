@@ -391,7 +391,7 @@ data:
 
 
     # Option to use native load balancer or not
-    #use_native_loadbalancer = True
+    use_native_loadbalancer = True
 
 
     # Option to auto scale layer 4 load balancer or not. If set to True, NCP
@@ -401,7 +401,7 @@ data:
 
     # Option to use native load balancer or not when ingress class annotation
     # is missing. Only effective if use_native_loadbalancer is set to true
-    #default_ingress_class_nsx = True
+    default_ingress_class_nsx = True
 
     # Path to the default certificate file for HTTPS load balancing. Must be
     # specified along with lb_priv_key_path option
