@@ -1146,16 +1146,6 @@ spec:
           imagePullPolicy: IfNotPresent
           # override NCP image entrypoint
           command: ["start_node_agent"]
-          livenessProbe:
-            exec:
-              command:
-                - /bin/sh
-                - -c
-                - timeout 5 check_pod_liveness nsx-node-agent
-            initialDelaySeconds: 5
-            timeoutSeconds: 5
-            periodSeconds: 10
-            failureThreshold: 5
           securityContext:
             capabilities:
               add:
@@ -1189,14 +1179,6 @@ spec:
           imagePullPolicy: IfNotPresent
           # override NCP image entrypoint
           command: ["start_kube_proxy"]
-          livenessProbe:
-            exec:
-              command:
-                - /bin/sh
-                - -c
-                - timeout 5 check_pod_liveness nsx-kube-proxy
-            initialDelaySeconds: 5
-            periodSeconds: 5
           securityContext:
             capabilities:
               add:
@@ -1231,17 +1213,6 @@ spec:
                 - SYS_ADMIN
                 - SYS_NICE
                 - SYS_MODULE
-          livenessProbe:
-            exec:
-              command:
-                - /bin/sh
-                - -c
-                # You must pass --allowOVSOnHost if you are running OVS on the
-                # host before the installation. This allows livelinessProbe to
-                # succeed and container won't restart frequently.
-                - timeout 5 check_pod_liveness nsx-ovs
-            initialDelaySeconds: 5
-            periodSeconds: 5
           volumeMounts:
           # ncp.ini
           - name: config-volume
